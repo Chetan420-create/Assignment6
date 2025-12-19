@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form Validation</title>
+    <link rel="stylesheet" href="loginform-validation.css">
+    <style>
+        .err1 , .err2{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login">
+     <div class="log"> <h2>Login </h2></div>
+      <form>
+       <div class="inputs">
+         <label>Enter your name</label>
+        <input type="text" id="username" name="Name" placeholder="Chetan Bhankhede">
+        <label>Enter your password</label>
+        <input type="password" id="password" name="password" placeholder="Enter password">
+       </div>
+      <div class="err">
+          <button type="button" id="btn" onclick="login()">login</button>
+         <p id="err1">Please fill the field</p>
+         <p id="err2">Enter the password of length greater than 6</p>
+      </div>
+      </form>
+    </div>
+
+    <script>
+        let uname = document.getElementById('username');
+        let pword = document.getElementById('password');
+        let err1 = document.getElementById('err1');
+        let err2 = document.getElementById('err2');
+        let btn = document.getElementById('btn');
+        err1.style.display='none';
+        err2.style.display='none';
+
+        // uname.addEventListener('input',function(event){
+        //     console.log(event.target.value);
+        // })
+
+      function login(){
+
+          if(uname.value==="" || pword.value===""){
+            err1.style.display='block';
+        }else if(pword.value.length<=6 || !uname.value===""){
+            err1.style.display='none';
+            err2.style.display='block';
+        }else{
+            err1.style.display='none';
+            err2.style.display='none';
+        }
+      }
+
+    </script>
+</body>
+</html>

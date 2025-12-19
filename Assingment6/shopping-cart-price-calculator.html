@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart Price Calcultor</title>
+    <link rel="stylesheet" href="shopping-cart-price-calculator.css">
+</head>
+<body>
+
+    <div class="cart">
+
+        <div class="option">
+            <label for="Product">Choose Product</label>
+            <select name="Product" id="Products">
+                <option value="" id="snone" disabled selected>Select one</option>
+                <option value="T-shirt" id="tshirt">T-shirt</option>
+                <option value="Jeens" id="jins">Jeens</option>
+                <option value="Shirt" id="shirt">Shirt</option>
+            </select>
+        </div>
+
+        <div class="pric">
+            <p>Price : <span id="price">$0</span></p>
+        </div>
+
+        <div class="inputs">
+            <input placeholder="enter quantity" type="number" id="quantity">
+        </div>
+
+        <div class="btn">
+            <button type="button" id="btn1">Add to cart</button>
+        </div>
+
+        <div class="totalprice"> <h2>Total price : <span id="cal">0</span></h2></div>
+
+        <div class="pay">
+            <button id="pbtn" type="button">Payment</button>
+        </div>
+
+    </div>
+    
+                <!-- Java Script Code Start -->
+    <script>
+        let quantity = document.getElementById('quantity');
+        let price = document.getElementById('cal');
+        let t_shirt = document.getElementById('tshirt');
+        let jins = document.getElementById('jins');
+        let shirt = document.getElementById('shirt');
+        let product_price = document.getElementById('price');
+        let s_none = document.getElementById('snone');
+        let selctproduct = document.getElementById('Products');
+
+        let totalprice = 0;
+        let t_shirt1 = 200;
+        let jins1 = 500;
+        let shirt1 = 800;
+
+       selctproduct.addEventListener('change' , function(event){
+            let p = event.target.value;
+          
+            if(p==='T-shirt')
+            {
+                 product_price.innerText=t_shirt1;
+            }
+              else if(p==='Jeens')
+            {
+                product_price.innerText=jins1;
+            }
+              else if(p==='Shirt'){
+                product_price.innerText=shirt1;
+            }
+              else{
+                product_price.innerText=0;
+            }
+           
+        })
+
+        document.getElementById('btn1').addEventListener('click',function(event){
+            let quantity1 = Number(quantity.value);
+            if(quantity1 < 0)
+            {
+                quantity1=0
+            }
+           
+           
+            if(selctproduct.value==='T-shirt')
+            {         
+                totalprice =totalprice + quantity1 * t_shirt1;
+                price.innerText=totalprice;         
+            }
+            else if(selctproduct.value ==='Jeens')
+           {
+                totalprice = totalprice + quantity1 * jins1;
+                price.innerText=totalprice;      
+           }
+            else if(selctproduct.value === 'Shirt'){
+                totalprice = totalprice + quantity1 * shirt1;
+                price.innerText=totalprice;    
+           }
+
+        quantity.value=''
+        selctproduct.value='';
+        product_price.innerText=0;
+        })
+
+        document.getElementById('pbtn').addEventListener('click',function(event){
+            price.innerText=0;
+        })
+
+    </script>
+</body>
+</html>
